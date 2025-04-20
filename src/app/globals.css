@@ -1,26 +1,38 @@
-@import "tailwindcss";
+@import "tailwindcss" source("../**/*.{js,ts,jsx,tsx,mdx}");
 
+/* Define dark mode variables directly */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a; /* Or your preferred dark bg */
+  --foreground: #ededed; /* Or your preferred dark text */
+  --font-geist-sans: /* Define if using Geist */ ;
+  --font-geist-mono: /* Define if using Geist */ ;
 }
 
+/* Apply base dark theme variables */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif; /* Add fallbacks */
+  --font-mono: var(--font-geist-mono), monospace; /* Add fallbacks */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans); /* Use the theme variable */
+}
+
+/* Optional: Style scrollbars for dark mode if desired */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1f2937; /* gray-800 */
+}
+::-webkit-scrollbar-thumb {
+  background: #4b5563; /* gray-600 */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280; /* gray-500 */
 }
